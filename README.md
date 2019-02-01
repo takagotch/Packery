@@ -216,7 +216,14 @@ $grid.off( 'layoutComplete', onLayout );
 $grid.one( 'layoutComplete', function(){
   console.log('layout done, just this one time');
 });
-// https://packery.metafizzy.co/events.html
+
+$grid.on('layoutComplete', function( event, items ){
+  console.log( items.length );
+});
+pckry.on('layoutComplete', function( items ){
+  console.log( items.length );
+});
+
 
 ```
 
