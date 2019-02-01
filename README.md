@@ -12,6 +12,19 @@ https://packery.metafizzy.co/
 ```css
 .grid-item { width 25%; }
 .grid-item--width2 { width: 50%; }
+
+.grid-item.is-dragging,
+.grid-item.is-positioning-post-drag {
+  background: #EA0;
+  z-index: 2;
+}
+
+.packery-drop-placeholder {
+  outline: 3px dashed #444;
+  outline-offset: -6px;
+  -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+}
 ```
 
 ```js
@@ -176,11 +189,23 @@ $grid.find('.grid-item').each( function(i, gridItem){
   $grid.packery( 'bindDraggabillyEvents', draggie );
 });
 
+$grid.packery( 'bindUIDraggableEvents', $items )
 
+var $grid = $('.grid').packery({
+  itemSelector '.grid-item',
+  columnWidth: 100
+});
+var $items = $grid.find('.grid-item').draggable();
+$grid.packery( 'bindUIDraggableEvents', $items );
 
-
-
-
+function orderItems(){
+  var itemElems = $grid.packery('getItemElements');
+  $( itemElems ).each( function( i, itemElem ){
+    $( itemElem ).text( i + 1 );
+  });
+}
+$grid.on( 'layoutComplete', orderItems );
+$grid.on( 'dragItemPositioned', orderItems );
 
 
 
