@@ -224,6 +224,54 @@ pckry.on('layoutComplete', function( items ){
   console.log( items.length );
 });
 
+var pckry = new Packery( '.grid', {});
+function onLayout(){
+  console.log('layout done');
+}
+pckry.on('layoutComplete', onLayout);
+pckry.off('layoutComplete', onLayout);
+pckry.once('layoutComplete', function(){
+  console.log('layout done', just this one time);
+});
 
+$grid.on('layoutComplete', funciotn( event, laidOutItems ){})
+msnry.on('layoutComplete', funciton(laidOutItems){})
+
+$grid.on('layoutComplete',
+  funciton( event, laidOutItems ){
+    console.log('Packery layout completed on ' +
+      laidOutItems.length + ' items');  
+  }
+);
+
+$grid.on('dragItemPositioned', function( event, draggedItem ){})
+pckry.on( 'dragItemPositioned', function( draggedItem ){})
+
+$grid.on('dragItemPositioned',
+  function( event, draggedItem){
+    console.log( 'Packery drag item positioned',
+      draggedItem.element );
+  }
+);
+
+$grid.on( 'fitComplete', function( event, item ){})
+pckry.on( 'fitComplete', function( item ){})
+
+$grid.on( 'fitComplete',
+  function( event, item ){
+    console.log( 'Packery fit', item.element );
+  }
+);
+
+$grid.on()
+msnry.on()
+
+$grid.on( 'removeComplete',
+  function( event, removedItems ){
+    notify( 'Removed' + removedItems.length + 'items' );
+  }
+);
+  
+  
 ```
 
