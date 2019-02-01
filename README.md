@@ -207,8 +207,16 @@ function orderItems(){
 $grid.on( 'layoutComplete', orderItems );
 $grid.on( 'dragItemPositioned', orderItems );
 
-
-
+var $grid = $('.grid').packery({});
+function onLayout(){
+  console.log('layout done');
+}
+$grid.on( 'layoutComplete', onLayout );
+$grid.off( 'layoutComplete', onLayout );
+$grid.one( 'layoutComplete', function(){
+  console.log('layout done, just this one time');
+});
+// https://packery.metafizzy.co/events.html
 
 ```
 
